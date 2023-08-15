@@ -45,7 +45,7 @@ def inference(a):
     generator.remove_weight_norm()
     with torch.no_grad():
         for i, filname in enumerate(filelist):
-            x = np.load(os.path.join(a.input_mels_dir, filname))
+            x = np.load(os.path.join(a.input_mels_dir, filname))['arr_0']
             x = torch.FloatTensor(x).to(device)
             y_g_hat = generator(x)
             audio = y_g_hat.squeeze()
